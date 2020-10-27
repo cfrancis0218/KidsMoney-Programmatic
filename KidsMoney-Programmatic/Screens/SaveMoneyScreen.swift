@@ -8,7 +8,7 @@
 import UIKit
 
 protocol AddSavingsProtocol {
-    func addSaving(price: String)
+    func addSavings(price: String)
 }
 
 class SaveMoneyScreen: UIViewController {
@@ -20,7 +20,7 @@ class SaveMoneyScreen: UIViewController {
     var delegate: AddSavingsProtocol?
     
     let amountField: UITextField = {
-        var field = UITextField()
+        let field = UITextField()
         field.backgroundColor = .white
         field.textColor = .black
         field.attributedPlaceholder = NSAttributedString(string: "$ Amount", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
@@ -47,13 +47,12 @@ class SaveMoneyScreen: UIViewController {
         itemConstraints()
         doneButtonSetup()
         view.backgroundColor = screenColor
-        
         addButton.addTarget(self, action: #selector(goToRootView), for: .touchUpInside)
     }
     
     @objc func goToRootView() {
         if amountField.text != "" {
-            delegate?.addSaving(price: amountField.text!)
+            delegate?.addSavings(price: amountField.text!)
             navigationController?.popToRootViewController(animated: true)
         }
     }

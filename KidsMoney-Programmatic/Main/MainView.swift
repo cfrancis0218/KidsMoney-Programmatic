@@ -9,7 +9,7 @@ import UIKit
 
 let reuseIdentifer = "cell"
 
-class MainView: UIViewController, AddSavingsProtocol {
+class MainView: UIViewController, UITableViewDelegate, UITableViewDataSource, AddSavingsProtocol {
     
     var prices: [PricesList] = []
     var moneyTableView = MoneyTableView()
@@ -69,9 +69,8 @@ class MainView: UIViewController, AddSavingsProtocol {
         view.backgroundColor = .white
         self.moneyTableView.delegate = self
         self.moneyTableView.dataSource = self
-        
+        // prices.append(PricesList(price: "$ 500"))
         moneyTableView.register(MoneyCell.self, forCellReuseIdentifier: reuseIdentifer)
-        
         // addTargets
         saveButton.addTarget(self, action: #selector(goToSaveScreen), for: .touchUpInside)
         safeSwitch.addTarget(self, action: #selector(safeModeToggle), for: .touchUpInside)
@@ -90,9 +89,17 @@ class MainView: UIViewController, AddSavingsProtocol {
         }
     }
     
-    func addSaving(price: String) {
+    func addSavings(price: String) {
+        // MARK: CURRENT PROBLEM
+        // Works in viewDidLoad ---> prices.append(PricesList(price: "$ 500"))
+        // Doesn't Work prices.append(PricesList(price: price))
         prices.append(PricesList(price: price))
         moneyTableView.reloadData()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let vc = segue.destination as! SaveMoneyScreen
+        vc.delegate = self
     }
     
     @objc func goToSaveScreen() {
@@ -101,11 +108,6 @@ class MainView: UIViewController, AddSavingsProtocol {
     
     private func navigationSetup() {
         navigationController?.isNavigationBarHidden = true
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let vc = segue.destination as! SaveMoneyScreen
-        vc.delegate = self
     }
     
     private func viewConstraints() {
@@ -155,13 +157,84 @@ class MainView: UIViewController, AddSavingsProtocol {
             safeSwitch.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             safeSwitch.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -560),
             
-            moneyTableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 222),
+            moneyTableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 265),
             moneyTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
             moneyTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -0),
             moneyTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),
         ])
     }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    // Controls Swipe Check w/ Safe Switch
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        if safeSwitch.isOn {
+            return nil
+        } else {
+            let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { _, _, complete in
+                self.prices.remove(at: indexPath.row)
+                self.moneyTableView.deleteRows(at: [indexPath], with: .automatic)
+                complete(true)
+            }
+            
+            deleteAction.backgroundColor = UIColor.systemGray6
+            
+            let config = UISwipeActionsConfiguration(actions: [deleteAction])
+            config.performsFirstActionWithFullSwipe = true
+            return config
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        prices.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = moneyTableView.dequeueReusableCell(withIdentifier: reuseIdentifer, for: indexPath) as! MoneyCell
+        cell.priceLabel.text = prices[indexPath.row].price
+        cell.indexPosition =  indexPath.row
+        cell.prices = prices
+        cell.backgroundColor = .white
+        return cell
+    }
+    
+    
 
+}
 
+class MoneyCell: UITableViewCell {
+    
+    var prices: [PricesList]?
+    var indexPosition: Int?
+    
+    let priceLabel: UILabel = {
+        let pricesLabel = UILabel()
+        pricesLabel.textColor = .black
+        pricesLabel.font = UIFont.systemFont(ofSize: 25, weight: .semibold)
+        return pricesLabel
+    }()
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setupLabel()
+    }
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupLabel()
+    }
+    
+    func setupLabel() {
+        contentView.addSubview(priceLabel)
+        priceLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            priceLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+            priceLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+            priceLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+            priceLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 10)
+        ])
+    }
 }
 
