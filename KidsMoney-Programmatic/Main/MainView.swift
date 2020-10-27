@@ -7,16 +7,12 @@
 
 import UIKit
 
+let reuseIdentifer = "cell"
+
 class MainView: UIViewController, AddSavingsProtocol {
     
     var prices: [PricesList] = []
-    
-    let moneyTableView: UITableView = {
-        var tableView = UITableView()
-        tableView.backgroundColor = .white
-        tableView.separatorColor = .black
-        return tableView
-    }()
+    var moneyTableView = MoneyTableView()
     
     let kidsMoneyLabel: UILabel = {
         let label = UILabel()
@@ -71,11 +67,10 @@ class MainView: UIViewController, AddSavingsProtocol {
         navigationSetup()
         viewConstraints()
         view.backgroundColor = .white
+        self.moneyTableView.delegate = self
+        self.moneyTableView.dataSource = self
         
-        moneyTableView.delegate = self
-        moneyTableView.dataSource = self
-        
-        moneyTableView.register(MoneyCell.self, forCellReuseIdentifier: "cell")
+        moneyTableView.register(MoneyCell.self, forCellReuseIdentifier: reuseIdentifer)
         
         // addTargets
         saveButton.addTarget(self, action: #selector(goToSaveScreen), for: .touchUpInside)
@@ -96,7 +91,7 @@ class MainView: UIViewController, AddSavingsProtocol {
     }
     
     func addSaving(price: String) {
-        prices.append(PricesList(prices: price))
+        prices.append(PricesList(price: price))
         moneyTableView.reloadData()
     }
     

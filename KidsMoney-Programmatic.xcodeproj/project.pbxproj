@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5327EA3025479FA100721DD2 /* MoneyTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5327EA2F25479FA100721DD2 /* MoneyTableView.swift */; };
 		53BF854925474B310068A515 /* MoneyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BF854825474B310068A515 /* MoneyCell.swift */; };
 		53BF854F25474B5E0068A515 /* SaveMoneyScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BF854E25474B5E0068A515 /* SaveMoneyScreen.swift */; };
 		53BF855425474BC70068A515 /* PricesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BF855325474BC70068A515 /* PricesList.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5327EA2F25479FA100721DD2 /* MoneyTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyTableView.swift; sourceTree = "<group>"; };
 		53BF854825474B310068A515 /* MoneyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyCell.swift; sourceTree = "<group>"; };
 		53BF854E25474B5E0068A515 /* SaveMoneyScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveMoneyScreen.swift; sourceTree = "<group>"; };
 		53BF855325474BC70068A515 /* PricesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PricesList.swift; sourceTree = "<group>"; };
@@ -45,6 +47,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5327EA2E25479F8100721DD2 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				5327EA2F25479FA100721DD2 /* MoneyTableView.swift */,
+			);
+			path = TableView;
+			sourceTree = "<group>";
+		};
 		53BF854725474B0F0068A515 /* TableViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +107,7 @@
 		53D336BA25471325002A83D7 /* KidsMoney-Programmatic */ = {
 			isa = PBXGroup;
 			children = (
+				5327EA2E25479F8100721DD2 /* TableView */,
 				53BF855625474C0B0068A515 /* Extensions */,
 				53BF855225474BAF0068A515 /* Model */,
 				53BF854725474B0F0068A515 /* TableViewCell */,
@@ -209,6 +220,7 @@
 				53BF856025474C960068A515 /* MainViewDelegate.swift in Sources */,
 				53BF854F25474B5E0068A515 /* SaveMoneyScreen.swift in Sources */,
 				53BF854925474B310068A515 /* MoneyCell.swift in Sources */,
+				5327EA3025479FA100721DD2 /* MoneyTableView.swift in Sources */,
 				53D336BE25471325002A83D7 /* SceneDelegate.swift in Sources */,
 				53BF856325474CB60068A515 /* MainViewDataSource.swift in Sources */,
 				53BF855425474BC70068A515 /* PricesList.swift in Sources */,

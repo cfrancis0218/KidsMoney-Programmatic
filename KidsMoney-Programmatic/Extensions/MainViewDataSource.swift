@@ -17,12 +17,11 @@ extension MainView: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = moneyTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MoneyCell
-        cell.priceLabel.text = prices[indexPath.row].prices
+        let cell = moneyTableView.dequeueReusableCell(withIdentifier: reuseIdentifer, for: indexPath) as! MoneyCell
         cell.indexPosition =  indexPath.row
+        cell.priceLabel.text = prices[indexPath.row].price
         cell.prices = prices
         return cell
     }
-    
     
 }

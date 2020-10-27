@@ -9,10 +9,10 @@ import Foundation
 import UIKit
 
 class PricesList {
-    var prices = ""
+    var price = ""
     
-    convenience init(prices: String) {
+    convenience init(price: String) {
         self.init()
-        self.prices = prices
+        self.price = price
     }
 }

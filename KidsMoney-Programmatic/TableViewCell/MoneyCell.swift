@@ -7,23 +7,28 @@
 
 import UIKit
 
-class MoneyCell: UITableViewCell {
 
-    var priceLabel: UILabel = {
-        var pricesLabel = UILabel()
-        pricesLabel.text = ""
+
+class MoneyCell: UITableViewCell {
+    
+    var prices: [PricesList]?
+    var indexPosition: Int?
+    
+    let priceLabel: UILabel = {
+        let pricesLabel = UILabel()
+        pricesLabel.text = "da"
         pricesLabel.textColor = .black
-        pricesLabel.font = UIFont.systemFont(ofSize: 10, weight: .semibold)
+        pricesLabel.font = UIFont.systemFont(ofSize: 5, weight: .semibold)
         return pricesLabel
     }()
     
     required init?(coder aDecoder: NSCoder) {
-        super.init(style: .value1, reuseIdentifier: "cell")
-        
-        contentView.addSubview(priceLabel)
+        super.init(coder: aDecoder)
+        self.addSubview(priceLabel)
     }
     
-    var prices: [PricesList]?
-    var indexPosition: Int?
-
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: "cell")
+        self.addSubview(priceLabel)
+    }
 }
