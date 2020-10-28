@@ -44,10 +44,9 @@ class SaveMoneyScreen: UIViewController {
     
     @objc func goToRootView() {
         
-        
         if amountField.text != "" {
             self.delegate?.addSavings(price: amountField.text!)
-            navigationController?.popViewController(animated: true)
+            navigationController?.popToRootViewController(animated: true)
         }
     }
     

@@ -77,7 +77,6 @@ class MainView: UIViewController, AddSavingsProtocol {
         navigationSetup()
         viewConstraints()
         delegateSetup()
-        prices.append(Prices(price: "$ 1000"))
         // Registry
         moneyTableView.register(MoneyCell.self, forCellReuseIdentifier: "cell")
         // addTargets
@@ -110,14 +109,15 @@ class MainView: UIViewController, AddSavingsProtocol {
     }
     
     func addSavings(price: String) {
-        // MARK: CURRENT PROBLEM
         prices.append(Prices(price: price))
         moneyTableView.reloadData()
     }
     
     
     @objc func goToSaveScreen() {
-        navigationController?.pushViewController(SaveMoneyScreen(), animated: true)
+        let saveMoneyScreen = SaveMoneyScreen()
+        saveMoneyScreen.delegate = self
+        navigationController?.pushViewController(saveMoneyScreen, animated: true)
     }
     
     private func navigationSetup() {
