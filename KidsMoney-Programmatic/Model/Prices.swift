@@ -7,7 +7,8 @@
 
 import UIKit
 
-class PricesList {
+
+class Prices {
     var price = ""
     
     convenience init(price: String) {
@@ -15,3 +16,4 @@ class PricesList {
         self.price = price
     }
 }
+

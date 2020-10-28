@@ -8,8 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		5327EA3025479FA100721DD2 /* MoneyTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5327EA2F25479FA100721DD2 /* MoneyTableView.swift */; };
+		532B9FD725487F6D00424AD6 /* MoneyDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532B9FD625487F6D00424AD6 /* MoneyDelegate.swift */; };
+		532B9FDB25487F7E00424AD6 /* MoneyDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532B9FDA25487F7E00424AD6 /* MoneyDataSource.swift */; };
+		532B9FE32549022F00424AD6 /* AmountField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532B9FE22549022F00424AD6 /* AmountField.swift */; };
+		53BE359125491015001AEBB3 /* MoneyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BE359025491015001AEBB3 /* MoneyCell.swift */; };
 		53BF854F25474B5E0068A515 /* SaveMoneyScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BF854E25474B5E0068A515 /* SaveMoneyScreen.swift */; };
-		53BF855425474BC70068A515 /* PricesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BF855325474BC70068A515 /* PricesList.swift */; };
+		53BF855425474BC70068A515 /* Prices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BF855325474BC70068A515 /* Prices.swift */; };
 		53D336BC25471325002A83D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D336BB25471325002A83D7 /* AppDelegate.swift */; };
 		53D336BE25471325002A83D7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D336BD25471325002A83D7 /* SceneDelegate.swift */; };
 		53D336C025471325002A83D7 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D336BF25471325002A83D7 /* MainView.swift */; };
@@ -19,8 +23,12 @@
 
 /* Begin PBXFileReference section */
 		5327EA2F25479FA100721DD2 /* MoneyTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyTableView.swift; sourceTree = "<group>"; };
+		532B9FD625487F6D00424AD6 /* MoneyDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyDelegate.swift; sourceTree = "<group>"; };
+		532B9FDA25487F7E00424AD6 /* MoneyDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyDataSource.swift; sourceTree = "<group>"; };
+		532B9FE22549022F00424AD6 /* AmountField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountField.swift; sourceTree = "<group>"; };
+		53BE359025491015001AEBB3 /* MoneyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyCell.swift; sourceTree = "<group>"; };
 		53BF854E25474B5E0068A515 /* SaveMoneyScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveMoneyScreen.swift; sourceTree = "<group>"; };
-		53BF855325474BC70068A515 /* PricesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PricesList.swift; sourceTree = "<group>"; };
+		53BF855325474BC70068A515 /* Prices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prices.swift; sourceTree = "<group>"; };
 		53D336B825471325002A83D7 /* KidsMoney-Programmatic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KidsMoney-Programmatic.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		53D336BB25471325002A83D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		53D336BD25471325002A83D7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,9 +57,27 @@
 			path = TableView;
 			sourceTree = "<group>";
 		};
+		532B9FD525487F5500424AD6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				532B9FD625487F6D00424AD6 /* MoneyDelegate.swift */,
+				532B9FDA25487F7E00424AD6 /* MoneyDataSource.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		532B9FE12549020A00424AD6 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				532B9FE22549022F00424AD6 /* AmountField.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		53BF854725474B0F0068A515 /* TableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				53BE359025491015001AEBB3 /* MoneyCell.swift */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -67,7 +93,7 @@
 		53BF855225474BAF0068A515 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				53BF855325474BC70068A515 /* PricesList.swift */,
+				53BF855325474BC70068A515 /* Prices.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -91,6 +117,8 @@
 		53D336BA25471325002A83D7 /* KidsMoney-Programmatic */ = {
 			isa = PBXGroup;
 			children = (
+				532B9FE12549020A00424AD6 /* Components */,
+				532B9FD525487F5500424AD6 /* Extensions */,
 				5327EA2E25479F8100721DD2 /* TableView */,
 				53BF855225474BAF0068A515 /* Model */,
 				53BF854725474B0F0068A515 /* TableViewCell */,
@@ -201,9 +229,13 @@
 				53D336C025471325002A83D7 /* MainView.swift in Sources */,
 				53D336BC25471325002A83D7 /* AppDelegate.swift in Sources */,
 				53BF854F25474B5E0068A515 /* SaveMoneyScreen.swift in Sources */,
+				532B9FDB25487F7E00424AD6 /* MoneyDataSource.swift in Sources */,
+				53BE359125491015001AEBB3 /* MoneyCell.swift in Sources */,
 				5327EA3025479FA100721DD2 /* MoneyTableView.swift in Sources */,
 				53D336BE25471325002A83D7 /* SceneDelegate.swift in Sources */,
-				53BF855425474BC70068A515 /* PricesList.swift in Sources */,
+				532B9FE32549022F00424AD6 /* AmountField.swift in Sources */,
+				53BF855425474BC70068A515 /* Prices.swift in Sources */,
+				532B9FD725487F6D00424AD6 /* MoneyDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

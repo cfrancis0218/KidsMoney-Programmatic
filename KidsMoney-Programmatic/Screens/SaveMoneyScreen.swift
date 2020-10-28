@@ -10,32 +10,24 @@ import UIKit
 protocol AddSavingsProtocol {
     func addSavings(price: String)
 }
-
 class SaveMoneyScreen: UIViewController {
     
     var doneButton = UIToolbar()
     
-    var screenColor = UIColor.white
+    var screenColor =  UIColor(red: 23 / 255.0, green: 24 / 255.0, blue: 26 / 255.0, alpha: 1.0)
     
     var delegate: AddSavingsProtocol?
     
-    let amountField: UITextField = {
-        let field = UITextField()
-        field.backgroundColor = .white
-        field.textColor = .black
-        field.attributedPlaceholder = NSAttributedString(string: "$ Amount", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
-        field.borderStyle = .roundedRect
-        return field
-    }()
+    let amountField = AmountField()
     
     let addButton: UIButton = {
         var button = UIButton()
         button.layer.cornerRadius = 15
-        button.layer.shadowColor = UIColor.darkGray.cgColor
+        button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOffset = .zero
         button.layer.shadowRadius = 15
         button.layer.shadowOpacity = 0.3
-        button.backgroundColor = .systemBlue
+        button.backgroundColor = UIColor(red: 23 / 255.0, green: 24 / 255.0, blue: 26 / 255.0, alpha: 1.0)
         button.setTitle("Add Amount", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
@@ -51,9 +43,11 @@ class SaveMoneyScreen: UIViewController {
     }
     
     @objc func goToRootView() {
+        
+        
         if amountField.text != "" {
-            delegate?.addSavings(price: amountField.text!)
-            navigationController?.popToRootViewController(animated: true)
+            self.delegate?.addSavings(price: amountField.text!)
+            navigationController?.popViewController(animated: true)
         }
     }
     
@@ -73,6 +67,8 @@ class SaveMoneyScreen: UIViewController {
         amountField.inputAccessoryView = doneButton
     }
     
+    
+    
     @objc func doneButtonAction() {
         amountField.resignFirstResponder()
     }
@@ -87,12 +83,12 @@ class SaveMoneyScreen: UIViewController {
         
         NSLayoutConstraint.activate([
             
-            amountField.topAnchor.constraint(equalTo: view.topAnchor, constant: 200),
+            amountField.topAnchor.constraint(equalTo: view.topAnchor, constant: 300),
             amountField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
             amountField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
-            amountField.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -200),
+            amountField.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -450),
             
-            addButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 650),
+            addButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 700),
             addButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
             addButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
             addButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40),

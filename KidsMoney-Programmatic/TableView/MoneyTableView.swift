@@ -11,12 +11,17 @@ class MoneyTableView: UITableView {
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        tableSetup()
     }
     
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: .plain)
+        tableSetup()
         
-        backgroundColor = .white
-        separatorColor = .systemBlue
+    }
+    
+    func tableSetup() {
+        backgroundColor = .clear
+        separatorColor = .black
     }
 }
